@@ -171,6 +171,15 @@ input[type="radio"] {
   cursor: pointer;
   box-shadow: none;
 }
+.mfp-close:before {
+	top:4px;
+} 
+.mfp-close.clicked:before {
+  top:-4px !important;
+}
+.mfp-close.clicked:after {
+  top:-4px !important;
+}
 
 /* Input Placeholder Color */
 ::-webkit-input-placeholder {
