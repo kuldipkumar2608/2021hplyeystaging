@@ -91,6 +91,22 @@ $(document).ready(function(){
 	/*  Mobile Menu - mmenu.js
 	/*--------------------------------------------------*/
 	$(function() {
+		$(".sign_in_link").click(function () {
+			$(".sign_in_li").trigger('click');
+		});
+
+		$(".sign_up_link").click(function () {
+			$(".sign_up_li").trigger('click');
+		});
+
+		$('#unverify_listing_msg_btn').click(function () {
+			if ($(".mfp-close").text() != '') {
+				$(".mfp-close").text('');
+				$(".mfp-close").addClass("clicked");
+			} else {
+				$(".mfp-close").removeClass("clicked");
+			}
+		});
 		function mmenuInit() {
 			var wi = $(window).width();
 			if(wi <= '1024') {
