@@ -2335,6 +2335,11 @@ border: 0px solid #dbdbdb;
      margin-top: 0px !important;
  }
 
+ /*message style fix*/
+.pagination ul li{
+    text-align: center !important;
+}
+
 @media (max-width: 768px){ 
     #listeo_gallery_desktop{
         display: none !important;
