@@ -19,7 +19,8 @@ if($count_gallery < 4 ){
 	$gallery_style = 'content';	
 }
 if( get_post_meta( $post->ID, '_gallery_style', true ) == 'top' && $count_gallery == 1 ) {
-	$gallery_style = 'none';	
+	//$gallery_style = 'none';	
+	$gallery_style = 'top';		
 }
 
 if ( have_posts() ) :

@@ -1,5 +1,49 @@
 <!-- Content
 ================================================== -->
+<?php 
+function isMobile_new() {
+	return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+
+$count_gallery = listeo_count_gallery_items($post->ID);
+
+if($count_gallery == 1) {
+
+	$gallery = get_post_meta( $post->ID, '_gallery', true );
+	    
+	echo '<div id="listeo_gallery_desktop" class="listeo_gallery_main row margin-bottom-0">';
+	    if( !empty($gallery) ){
+	        foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+		        
+				$image = wp_get_attachment_image_src( $attachment_id, 'listeo-gallery' );
+
+				echo '<div class="listeo_gallery_img_row_single">';
+				echo 	'<div class="listeo_gallery_first_full_img_single listeo_gallery_img_0">
+							<img src="'.$image[0].'"></img>
+						</div>';
+				echo '</div>';
+	        }
+	    }
+	echo '</div>';          
+
+	if(isMobile_new()) {
+		echo '<div id="listeo_gallery_mobail" class="mfp-gallery-container margin-bottom-0">';
+			foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+				$image = wp_get_attachment_image_src( $attachment_id, 'listeo-gallery' );
+				
+			    echo '<div class="listeo_gallery_img_row_single">';
+				echo 	'<div class="listeo_gallery_first_full_img_single listeo_gallery_img_0">
+							<img src="'.$image[0].'"></img>
+						</div>';
+				echo '</div>';
+			}
+		echo '</div>';
+	}
+
+} else {
+?>
+
+
 <?php $gallery = get_post_meta( $post->ID, '_gallery', true );
     if( !empty($gallery) ){
     	
@@ -85,5 +129,5 @@
 	</div>
     <?php
     }
-
+}
 ?>
