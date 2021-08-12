@@ -2828,3 +2828,38 @@ top: 12px !important;
 }
 
 /* lisiting page share icon end */
+
+/* Show all photos mobile view start */
+
+
+@media (max-width: 767px){
+
+.mfp-wrap.mfp-close-btn-in.mfp-auto-cursor.my-mfp-zoom-in.mfp-ready {
+   top: 0 !important;
+   height: auto !important;
+}
+
+.listeo_gallery_count_photos {
+   background-color: transparent !important;
+}
+
+#listeo_gallery_mobail{
+    height: auto !important;
+    min-height: initial !important;
+    max-height: initial !important;
+}
+
+a.button.listeo_gallery_show_all_btn.popup-with-zoom-anim {
+    padding: 6px 10px;
+    color: #fff;
+    position: relative;
+    font-size: 14px;
+}
+
+.hamburger.hamburger--collapse {
+    top: 30px;
+}
+
+}
+
+/* Show all photos mobile view end */
