@@ -46,7 +46,14 @@ $related_args = array(
     'post_status' => 'publish',
     'post__not_in' => array( $post->ID ),
     'orderby' => 'rand',
-    'tax_query' => $tax_query
+    'tax_query' => $tax_query,
+    'meta_query' => array(
+        array(
+            'key'       => '_verified',
+            'value'     => 'on',
+            'compare'   => '=',
+        )
+    ),
 );
 
 $related_query = new wp_query($related_args);
