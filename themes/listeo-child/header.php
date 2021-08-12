@@ -21,17 +21,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<?php
-if( is_singular( 'listing' ) ) {
-	$business_title = get_post_meta(get_the_ID(),'_website',true);
-	?>
-	<script>
-  		document.title = "<?php echo get_the_title().' | '.$business_title.' | '.get_option('blogdescription').' - '.get_option('blogname'); ?>";
-	</script>
-	<?php
-}
-?>
-
 <?php wp_head(); ?>
 </head>
 

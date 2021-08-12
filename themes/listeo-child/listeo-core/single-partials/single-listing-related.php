@@ -1,24 +1,44 @@
 <?php
 
 $listing_cats = get_the_terms( $post->ID, 'listing_category' );
-$listing_cats_slugs = wp_list_pluck( $listing_cats, 'slug' );
-$related_args1 = array(
-    'post_type' => 'listing',
-    'posts_per_page' => 4,
-    'post_status' => 'publish',
-    'post__not_in' => array( $post->ID ),
-    'orderby' => 'rand',
-    'tax_query' => array(
+$listing_region = get_the_terms( $post->ID, 'region' );
+
+$tax_query = array();
+
+if( !empty($listing_cats) && !empty($listing_region) ){
+    $tax_query = array(
+        'relation' => 'AND',
         array(
             'taxonomy' => 'listing_category',
-            'field' => 'slug',
-            'terms' => $listing_cats_slugs
-        )
-    )
-);
-
-$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri_segments = explode('/', $uri_path);
+            'field' => 'term_id',
+            'terms' => $listing_cats[0]->term_id,
+        ),
+        'relation' => 'AND',
+        array(
+            'taxonomy' => 'region',
+            'field' => 'term_id',
+            'terms' => $listing_region[0]->term_id,
+        ),
+    );
+}
+elseif (!empty($listing_cats)) {
+    $tax_query = array(
+        array(
+            'taxonomy' => 'listing_category',
+            'field' => 'term_id',
+            'terms' => $listing_cats[0]->term_id,
+        ),
+    );
+}
+elseif (!empty($listing_region)){
+    $tax_query = array(
+        array(
+            'taxonomy' => 'listing_category',
+            'field' => 'term_id',
+            'terms' => $listing_cats[0]->term_id,
+        ),
+    );
+} 
 
 $related_args = array(
     'post_type' => 'listing',
@@ -26,33 +46,12 @@ $related_args = array(
     'post_status' => 'publish',
     'post__not_in' => array( $post->ID ),
     'orderby' => 'rand',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'listing_category',
-            'field' => 'slug',
-            'terms' => $listing_cats_slugs
-        )
-    ),
-    'meta_query' => array(
-        'relation' => 'AND',
-        array(
-            'key'       => '_verified',
-            'value'     => 'on',
-            'compare'   => '=',
-        ),
-        array(
-            'key'       => '_address',
-            'value'     => $uri_segments[2],
-            'compare'   => 'LIKE'
-        )
-    ),
+    'tax_query' => $tax_query
 );
-
-
 
 $related_query = new wp_query($related_args);
     
-if( $related_query->have_posts() ) {
+if($related_query->have_posts()) {
     ?> 
     <div class="listeo_custom_sec_seprator related_listing_sep"><hr></div>
     <h3 style="margin-left: 5px;"> You may also like </h3> <div class="listings-container grid-layout row"> <div data-grid_columns="3" data-style="grid" id="listeo-listings-container"> <?php
