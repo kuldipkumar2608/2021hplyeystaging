@@ -2720,3 +2720,64 @@ p.mem-bdg:before {
         margin-top: 3px !important;
     }
 }
+
+/*Search page mobile view start*/
+
+@media (max-width: 767px){
+
+
+span.save.cm-chat-icon.left.listo-bookmark-icon-new.sign-in.popup-with-zoom-anim.new-signin.sign_in_link {
+    font-size: 18px !important;
+}
+
+.like-icon:before, .like-icon:after {font-size: 17px !important;}
+
+div#listeo-listings-container .col-lg-4.col-md-6 {
+    width: 50% !important;
+    padding: 8px !important;
+}
+
+a.slick-slide.slick-current.slick-active {
+    width: 172px !important;
+}
+
+.star-rating.listo-new-star-rating {
+    width: 100% !important;
+    position: initial !important;
+    justify-content: initial !important;
+    float: none !important;
+}
+
+.listeo_grid_view_item h3.listeo_single_list_title.listo-hed-h3-new{
+        font-size: 15px !important;
+        width: 100% !important;
+}
+
+
+.single_listing_description {
+  font-size: 12px;
+
+}
+
+/* lisiting page bookmark mobile view start*/
+
+button.popup-with-zoom-anim .like-icon:before {
+font-size: 18px;
+top: 12px !important;
+}
+
+/* listing page bookmark mobile view end*/
+
+}
+
+
+/*Search page mobile view end*/
+
+
+/* lisiting page share icon start */
+
+#widget_buttons_listings-2 .share-buttons.margin-bottom-0 {
+ text-align: center;
+}
+
+/* lisiting page share icon end */
