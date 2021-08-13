@@ -90,15 +90,28 @@ if($count_gallery == 1) {
         
         echo '<div class="listeo_gallery_mobail_main">';
 		echo '<div id="listeo_gallery_mobail" class="listing-slider mfp-gallery-container margin-bottom-0" style="display:none;">';
+
 		$gallery_count2 = 0;
-		foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+		
+        foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+
+          if($gallery_count2 < 4){
+
 			$image = wp_get_attachment_image_src( $attachment_id, 'listeo-gallery' );
+
 			echo '<a href="'.esc_url($image[0]).'" data-background-image="'.esc_attr($image[0]).'" class="item mfp-gallery"></a>';
+
+		}
+
 		    $gallery_count2++;
+
 		}
 		echo '</div>';
-        if($gallery_count2 > 2){
-		    echo '<div style="display:none;" class="listeo_gallery_count_photos"> <span class="listeo_gallery_currentslide"> 1 </span>/<span> '.$gallery_count2.' </span> </div>';
+
+        if($gallery_count2 >= 4){
+
+        echo '<div style="display:none;" data-ttt="'.$gallery_count2.'" class="listeo_gallery_count_photos"> <a href="#listeo_gallery_mobile_show_all_photos" class="button listeo_gallery_show_all_btn popup-with-zoom-anim"> Show all photos </a></div>';
+
         }
 		echo '</div>';
     
@@ -123,6 +136,30 @@ if($count_gallery == 1) {
 		            }
 
 		            $gallery_count++;
+                }
+			?>
+		</div>
+	</div>
+
+	<div id="listeo_gallery_mobile_show_all_photos" class="zoom-anim-dialog mfp-hide">
+		<div class="row margin-bottom-0" style="margin-top: 30px;">
+			<?php
+			    $gallery_count2 = 0;
+			    foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+                    $image = wp_get_attachment_image_src( $attachment_id, 'listeo-gallery' );
+		           
+		            if($gallery_count2 == 0) {
+		                echo '<div style="width: 50%;float: left; padding:5px;">
+		                    <img width="200%" height="200px" style="object-fit: cover;" src="'.$image[0].'"></img>
+            		    </div>';
+		            }
+		            else {
+                        echo '<div style="width: 50%;float: left; padding:5px;">
+		                    <img style="object-fit: cover;" width="200%" height="200px" src="'.$image[0].'"></img>
+		                </div>';
+		            }
+
+		            $gallery_count2++;
                 }
 			?>
 		</div>
