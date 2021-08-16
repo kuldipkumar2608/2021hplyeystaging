@@ -2729,3 +2729,10 @@ p.mem-bdg:before {
 }
 
 /*listing page rating */
+
+/* listing tip content start*/
+.listing-share{
+    position: unset !important;
+}
+
+/* listing tip content end*/
