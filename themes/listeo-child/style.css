@@ -2720,3 +2720,12 @@ p.mem-bdg:before {
         margin-top: 3px !important;
     }
 }
+
+
+/*listing page rating */
+
+.listing-titlebar-title .star-rating {
+    display: block;
+}
+
+/*listing page rating */
