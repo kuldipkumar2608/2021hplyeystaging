@@ -491,7 +491,8 @@ function secondsToResponseTime($ss) {
 
 	$time = "$M months";
 	if($M == 0){
-		$time = $d > 1 ? "within $d days" : "within $d day";
+		$time = $d > 1 ? "within 24 Hours" : 'within 24 Hours';
+		//$time = $d > 1 ? "within $d days" : "within $d day";
 	}
 	if($d == 0){
 		$time = $h > 1 ? "within $h hours" : "within $h hour";
