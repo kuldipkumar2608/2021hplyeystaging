@@ -2746,4 +2746,10 @@ p.mem-bdg:before {
 
 /* lisiting page share icon end */
 
+/* ratings add reviews box start */
 
+.sub-ratings-container .leave-rating label {
+    font: normal normal normal 20px/1 FontAwesome;
+}
+
+/* ratings add reviews box end */
