@@ -219,3 +219,94 @@
 </div>
 <?php } ?>
 <!-- Listing Item / End -->
+
+<!-- Google snippet / start -->
+
+<?php
+global $post;
+$rating = get_post_meta($post->ID, 'listeo-avg-rating', true); 
+$roundrating= round($rating,1); 
+$number = listeo_get_reviews_number($post->ID);
+$posttitle=get_the_title($post->ID);
+$posturl=get_permalink($post->ID);
+$gallery = get_post_meta( $post->ID, '_gallery', true );
+
+            foreach ( (array) $gallery as $attachment_id => $attachment_url ) {
+                $image[] = wp_get_attachment_image_src( $attachment_id, 'listeo-gallery' );
+              foreach ($image[0] as $key) {
+                $img[]=$key;
+              }
+
+        }
+
+  $id = sanitize_text_field(trim($post->ID));
+    $current_user = wp_get_current_user();
+
+       $total_visitor_reviews = get_comments(
+        array(
+          'orderby'   => 'post_date',
+                'order'   => 'DESC',
+                'status'  => 'approve',
+                'post_author' => $owner_id,
+          'parent'    => 0,
+          'post_id'    => $id,
+          'post_type' => 'listing',
+              )
+      );
+    
+    $visitor_reviews_args = array(
+
+      'post_author'   => $owner_id,
+      'parent'        => 0,
+      'status'    => 'approve',
+      'post_type'   => 'listing',
+      'post_id'     => $id,
+   
+    );
+    $visitor_reviews_pages = ceil(count($total_visitor_reviews)/$limit);
+    
+    $visitor_reviews = get_comments( $visitor_reviews_args ); 
+
+$reviewsarr=array();
+      foreach($visitor_reviews as $review) {
+             $authorname=$review->comment_author;
+             $datecomment=$review->comment_date;
+             $publisheddate='Last edited'.' '.date('M d,Y',strtotime($datecomment));
+             $reviewcontent=$review->comment_content;
+
+    $star_rating = get_comment_meta( $review->comment_ID, 'listeo-rating', true );  
+    $reviewRating=array('@type'=>"Rating","bestRating"=> "5",  "worstRating"=> "0","ratingValue"=> $roundrating);
+
+$reviewsarr[]=array('@type'=>'Review','author'=>$authorname,'datePublished'=>$publisheddate,"reviewBody"=>$reviewcontent,"reviewRating"=>$reviewRating);
+      
+}
+
+$reviews_snippet= json_encode($reviewsarr);
+?>
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "LocalBusiness",
+    "name": "<?php echo $posttitle;?>",
+    "url": "<?php echo $posturl;?>",
+    "image": "<?php echo $img[0];?>",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "bestRating": "5",
+        "worstRating": "0",
+        "ratingValue": "<?php echo $roundrating;?>",
+        "ratingCount": "<?php echo $number;?>"
+      },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "315 Brunswick Street",
+      "addressLocality": "brisbane",
+      "addressRegion": "QLD"
+    },
+    "reviews": 
+       
+        <?php echo $reviews_snippet;?>
+    
+  }
+</script>
+<!-- Google snippet / start -->
