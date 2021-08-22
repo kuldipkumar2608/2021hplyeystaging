@@ -142,10 +142,10 @@ class Listeo_Core_Meta_Boxes {
 			  $this->meta_boxes_rental(),
 			  $this->meta_boxes_prices(),
 			  $this->meta_boxes_video(),
+			  $this->meta_boxes_business_name(),
 			  $this->meta_boxes_cancellation_policy(),
 			  $this->meta_boxes_custom(),
 			 // $this->meta_boxes_details(),
-			 
 		);
 
 		// set tabs
@@ -155,8 +155,6 @@ class Listeo_Core_Meta_Boxes {
 			'tabs' => $tabs_setting
 		) );
   
-
-
 		// Pricing 
 		$cmb_menu = new_cmb2_box( array(
             'id'            => '_menu_metabox',
@@ -216,7 +214,6 @@ class Listeo_Core_Meta_Boxes {
 
 		);
 
-
 		$cmb_opening = new_cmb2_box( $opening_hours_options );
 
 		$cmb_opening->add_field( array(
@@ -271,8 +268,6 @@ class Listeo_Core_Meta_Boxes {
 					'after_field'  => '<button class="button button-secondary button-large clear-time-picker">'.esc_html__('Clear time','listeo_core').'</button>',
 					'after_row'      => '</div>',
 				) );
-			
-				
 			
 		}
 		//  EOF Opening hours
@@ -578,11 +573,11 @@ class Listeo_Core_Meta_Boxes {
 					'id'   => '_email_contact_widget',
 					'type' => 'checkbox',
 				),				
-				array(
+				/*array(
 					'name' => __( 'Website', 'listeo_core' ),
 					'id'   => '_website',
 					'type' => 'text',
-				),				
+				),*/				
 				array(
 					'name' => __( 'Facebook', 'listeo_core' ),
 					'id'   => '_facebook',
@@ -677,6 +672,26 @@ class Listeo_Core_Meta_Boxes {
 			)
 		);
 		$fields = apply_filters( 'listeo_video_fields', $fields );
+		
+		// Set meta box
+		return $fields;
+	}
+
+	public static function meta_boxes_business_name() {
+		
+		$fields = array(
+			'id'     => 'business_name_tab',
+			'title'  => __( 'Business Name', 'listeo_core' ),
+			'fields' => array(
+				array(
+					'name' => __( 'Business Name', 'listeo_core' ),
+					'id'   => '_website',
+					'type' => 'text',
+				),
+			
+			)
+		);
+		$fields = apply_filters( 'listeo_business_name_fields', $fields );
 		
 		// Set meta box
 		return $fields;
@@ -1089,9 +1104,4 @@ class Listeo_Core_Meta_Boxes {
 	function cmb2_render_callback_for_datetime( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
 		echo $field_type_object->input( array( 'type' => 'text', 'class' => 'input-datetime' ) );
 	}
-
- 
-
-
-
 }
