@@ -450,7 +450,6 @@ function get_vendor_average_response_time($user_id){
 	}
 }
 
-
 function get_vendor_average_response_rate($user_id){
 	global $wpdb;
 	$selectCon= $wpdb->get_results("SELECT *  FROM {$wpdb->prefix}listeo_core_conversations WHERE user_2 = {$user_id}");
@@ -469,13 +468,13 @@ function get_vendor_average_response_rate($user_id){
 		$rate = null;
 	}
 
-	if((10 <= $rate) && ($rate <= 60)){
-		return '<span style="color:#f00;">Bad</span>';
+	if((0 <= $rate) && ($rate <= 60)){
+		return '<span style="color:#f00;">Average</span>';
 	}
-	if((60 <= $rate) && ($rate <= 80)){
-		return '<span style="color:#ffc107;">Good</span>';
+	if((60 <= $rate) && ($rate <= 90)){
+		return '<span style="color:#ffc107;">Very good</span>';
 	}
-	if((80 <= $rate) && ($rate <= 100)){
+	if((90 <= $rate) && ($rate <= 100)){
 		return '<span style="color:#8bc34a;">Excellent </span>';
 	}
 
