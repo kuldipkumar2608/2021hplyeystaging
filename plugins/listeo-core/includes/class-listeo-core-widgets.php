@@ -1561,13 +1561,12 @@ class Listeo_Core_Owner_Widget extends Listeo_Core_Widget {
 					</div>
 				</div>
 				<div class="vendor-meta-details text-center">
-					<!-- <?php // if($resrate = get_vendor_average_response_rate($owner_data->id)) : ?>
-						<p style="padding-bottom:0 !important;margin-bottom:0 !important;">Response Rate: <?php //echo $resrate ?> </p>
-						<?php // endif; ?> -->
+					<?php  if($resrate = get_vendor_average_response_rate($owner_data->id)) : ?>
+						<p style="padding-bottom:0 !important;margin-bottom:0 !important;">Response Rate: <?php echo $resrate ?> </p>
+						<?php  endif; ?>
 					<?php if($restime = get_vendor_average_response_time($owner_data->id)) : ?>
 						<p>Response time: <strong><?php echo $restime ?></strong> </p>
 					<?php endif; ?>
-
 				</div>
 				<div class="new-list-btn">
 
@@ -1607,16 +1606,14 @@ class Listeo_Core_Owner_Widget extends Listeo_Core_Widget {
 		}
 		else { ?>
 
-
 			<div class="vendor-meta-details text-center">
-					<!-- <?php // if($resrate = get_vendor_average_response_rate($owner_data->id)) : ?>
-						<p style="padding-bottom:0 !important;margin-bottom:0 !important;">Response Rate: <?php //echo $resrate ?> </p>
-					<?php // endif; ?> -->
-					<?php if($restime = get_vendor_average_response_time($owner_data->id)) : ?>
-						<p>Response time: <strong><?php echo $restime ?></strong> </p>
-					<?php endif; ?>
-
-				</div>
+				<?php if($resrate = get_vendor_average_response_rate($owner_data->id)) : ?>
+					<p style="padding-bottom:0 !important;margin-bottom:0 !important;">Response Rate: <?php echo $resrate ?> </p>
+				<?php endif; ?>
+				<?php if($restime = get_vendor_average_response_time($owner_data->id)) : ?>
+					<p>Response time: <strong><?php echo $restime ?></strong> </p>
+				<?php endif; ?>
+			</div>
 
 
 			<!-- <p id="owner-widget-not-logged-in"><?php //printf( esc_html__( 'Please %s sign %s in to see contact details.', 'listeo_core' ), '<a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim">', '</a>' ) ?></p> -->
