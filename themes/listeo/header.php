@@ -111,15 +111,15 @@ $sticky = apply_filters('listeo_sticky_header_filter',$sticky);
 		                $logo_retina = get_option( 'pp_retina_logo_upload', '' ); 
 		             	if($logo) {
 		                    if(is_front_page()){ ?>
-		                    <a href="<?php echo esc_url( 'www.hypley.com.au' ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo esc_url($logo); ?>" data-rjs="<?php echo esc_url($logo_retina); ?>" alt="<?php esc_attr(bloginfo('name')); ?>"/></a>
+		                    <a href="<?php echo esc_url( 'www.hypley.com' ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo esc_url($logo); ?>" data-rjs="<?php echo esc_url($logo_retina); ?>" alt="<?php esc_attr(bloginfo('name')); ?>"/></a>
 		                    <?php } else { ?>
-		                    <a href="<?php echo esc_url( 'www.hypley.com.au' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url($logo); ?>" data-rjs="<?php echo esc_url($logo_retina); ?>" alt="<?php esc_attr(bloginfo('name')); ?>"/></a>
+		                    <a href="<?php echo esc_url( 'www.hypley.com' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url($logo); ?>" data-rjs="<?php echo esc_url($logo_retina); ?>" alt="<?php esc_attr(bloginfo('name')); ?>"/></a>
 		                    <?php }
 		                } else {
 		                    if(is_front_page()) { ?>
-		                    <h1><a href="<?php echo esc_url( 'www.hypley.com.au' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		                    <h1><a href="<?php echo esc_url( 'www.hypley.com' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 		                    <?php } else { ?>
-		                    <h2><a href="<?php echo esc_url( 'www.hypley.com.au' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
+		                    <h2><a href="<?php echo esc_url( 'www.hypley.com' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
 		                    <?php }
 		                }
 	                ?>
