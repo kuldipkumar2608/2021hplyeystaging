@@ -81,7 +81,7 @@
             if(!get_option('listeo_disable_reviews'))
             {
                  $rating = get_post_meta($post->ID, 'listeo-avg-rating', true);
-                    if(isset($rating)) : $rating_type = get_option('listeo_rating_type','star');
+                    if(isset($rating) && $rating > 0 ) : $rating_type = get_option('listeo_rating_type','star');
                     if($rating_type == 'numerical')
                     { ?>
          <div class="numerical-rating" data-rating="<?php $rating_value = esc_attr(round($rating,1)); printf("%0.1f",$rating_value); ?>">
