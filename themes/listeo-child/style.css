@@ -2443,6 +2443,8 @@ border: 0px solid #dbdbdb;
     }
 }
 
+.layout-switcher{display:none;}
+
 /*Social media login links design */
 /* Social Design Start*/
 .mo-openid-app-icons a {
