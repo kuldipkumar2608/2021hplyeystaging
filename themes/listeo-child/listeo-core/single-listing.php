@@ -331,7 +331,7 @@ else: ?>
 				}
 				else{ 
 					?>
-					<div id="un_verified_listing_widget" class="listing-widget widget listeo_core widget_listing_owner boxed-widget my_widget1">
+					<div id="unverified-status" id="un_verified_listing_widget" class="listing-widget widget listeo_core widget_listing_owner boxed-widget my_widget1">
 						<div>
 								<h4><b>Contact Business:</b></h4>
 								<?php 
