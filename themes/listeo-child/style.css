@@ -15,8 +15,14 @@ Template:  listeo
 
 
 /* start css listing design added by KI Dev on 19 02 2020 */
-.gray-style .main-search-input{    background-color: #ffffff;box-shadow: rgb(145 158 171 / 24%) 0px 8px 16px 0px;}
-
+#custom_html-2{box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    padding: 15px;
+    border-radius: 12px;margin-bottom: 20px;}
+#unverifiedcontact{box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    padding: 15px;
+    border-radius: 12px;
+	margin-bottom: 20px;}
+.main-detail-_types_of_events_you_service{    line-height: 20px;}
 .gray-style .main-search-input-item .chosen-container-single .chosen-single, .gray-style .main-search-input-item .chosen-single.chosen-container-active {    background: #ffffff !important;}
 input, input[type=text], input[type=password], input[type=email], input[type=number], textarea, select{
     padding:0 10px;
@@ -2753,3 +2759,16 @@ p.mem-bdg:before {
 }
 
 /* ratings add reviews box end */
+
+
+/* reviews below title start */
+
+span.cus_address {
+    display: block !important;
+}
+
+span.cus_address + .star-rating {
+    display: inline;
+}
+
+/* reviews below title end */
