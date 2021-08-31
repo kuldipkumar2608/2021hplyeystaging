@@ -12,7 +12,8 @@ Domain Path: /languages/
 Tags: light, responsive-layout, post-formats, theme-options, translation-ready, two-columns
 Template:  listeo
 */
-
+.pricing-list-container h4{color:#222222; 
+}
 #unverified-status{
     display:none;}
      .single-listing .elementor.elementor-27708{
@@ -27,7 +28,7 @@ Template:  listeo
         border-radius: 12px;
         margin-bottom: 20px;}
     
-    
+        #un_verified_listing_widget{display:none;}
     .main-detail-_types_of_events_you_service{    line-height: 20px;}
     .apartment-details li:last-child{line-height:20px;}
 /* start css listing design added by KI Dev on 19 02 2020 */
@@ -2303,9 +2304,10 @@ border: 0px solid #dbdbdb;
     margin-top: 12px;
 }
 .listeo_direct_fb_style_msg #direct_fb_style_msg_btn,#listeo_fb_style_unverify_msg{
-    background: #ff7465 !important;
-    color: #fff;
-    border-radius: 4px;
+    background: #fff !important;
+    color: #ff7465;
+    border: 2px solid #ff7465 !important;
+    border-radius: 8px;
     font-size: 16px;
     text-align: center;
     margin: 0;
