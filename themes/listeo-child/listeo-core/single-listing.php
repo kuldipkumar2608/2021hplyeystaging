@@ -389,7 +389,7 @@ else: ?>
 
 					<!-- User profile status start -->
 
-					<div class="boxed-widget margin-top-30 margin-bottom-50 verification-section bad-sec">
+					<div class="boxed-widget margin-top-30 margin-bottom-50 verification-section bad-sec" id="unverified-status-listing">
 					<?php					
 					global $wpdb;
 

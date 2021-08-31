@@ -3211,7 +3211,7 @@ overflow-y: scroll; */
 /* Style for gray main input version */
 .gray-style .main-search-input-item .chosen-container-single .chosen-single,
 .gray-style .main-search-input-item .chosen-single.chosen-container-active {
-  border: 1px solid #f7f7f7;
+  /*border: 1px solid #f7f7f7;*/
   background-color: #f7f7f7;
 }
 

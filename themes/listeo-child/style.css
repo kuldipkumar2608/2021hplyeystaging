@@ -12,6 +12,12 @@ Domain Path: /languages/
 Tags: light, responsive-layout, post-formats, theme-options, translation-ready, two-columns
 Template:  listeo
 */
+
+
+
+
+#unverified-status-listing{
+    display:none;}
 .pricing-list-container h4{color:#222222; 
 }
 #unverified-status{
@@ -1808,7 +1814,6 @@ div#listeo-listings-container .col-lg-12.col-md-12 .listing-item-container.list-
     color: #707070 !important;
 }
 
-.listing-item img{    padding: 5px 5px 0px 5px !important;}
 
 .slick-slide img{border-radius: 10px 10px 0px 0px;}
 
