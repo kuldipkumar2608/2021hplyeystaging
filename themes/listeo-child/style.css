@@ -2525,7 +2525,7 @@ border: 0px solid #dbdbdb;
     float: right;
     padding-right: 0px;}
 
-p.mem-bdg:before {content: "";background-image: url("/wp-content/themes/listeo-child/img/security-star-green.png");
+p.mem-bdg:before {content: "";background-image: url("https://hypley.com/wp-content/uploads/2021/08/security-star-green.png");
     height: 23px;
     width: 25px;
     position: relative;
