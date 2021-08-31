@@ -42,7 +42,7 @@ elseif (!empty($listing_region)){
 
 $related_args = array(
     'post_type' => 'listing',
-    'posts_per_page' => 4,
+    'posts_per_page' => 12,
     'post_status' => 'publish',
     'post__not_in' => array( $post->ID ),
     'orderby' => 'rand',

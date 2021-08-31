@@ -331,9 +331,11 @@ else: ?>
 				}
 				else{ 
 					?>
-					<div id="unverified-status" id="un_verified_listing_widget" class="listing-widget widget listeo_core widget_listing_owner boxed-widget my_widget1">
-						<div>
-								<h4><b>Contact Business:</b></h4>
+					<div id="unverifiedcontact"><h3>Message Vendor</h3>
+<?php echo do_shortcode('[fluentform id="10"]'); ?></div>
+					<div id="un_verified_listing_widget" class="listing-widget widget listeo_core widget_listing_owner boxed-widget my_widget1">	
+					<div>
+								<h4><b>Contact Vendor:</b></h4>
 								<?php 
 									if( is_user_logged_in() ) { 
 										?>
@@ -664,7 +666,8 @@ $reviews_snippet= json_encode($reviewsarr);
   }
 </script>
 <!-- Google snippet / end -->
-
+<?php
+echo do_shortcode( '[elementor-template id="29949"]' );?>
 <?php get_footer(); ?>
 
 <script>

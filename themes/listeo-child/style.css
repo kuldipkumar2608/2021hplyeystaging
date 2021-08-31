@@ -13,7 +13,23 @@ Tags: light, responsive-layout, post-formats, theme-options, translation-ready, 
 Template:  listeo
 */
 
-
+#unverified-status{
+    display:none;}
+     .single-listing .elementor.elementor-27708{
+        display: none !important;
+    } 
+    /*fluentform boxes*/
+    #custom_html-2{box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        padding: 15px;
+        border-radius: 12px;margin-bottom: 20px;}
+    #unverifiedcontact{box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;}
+    
+    
+    .main-detail-_types_of_events_you_service{    line-height: 20px;}
+    .apartment-details li:last-child{line-height:20px;}
 /* start css listing design added by KI Dev on 19 02 2020 */
 .gray-style .main-search-input{    background-color: #ffffff;box-shadow: rgb(145 158 171 / 24%) 0px 8px 16px 0px;}
 
