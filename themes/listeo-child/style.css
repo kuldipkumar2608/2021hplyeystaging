@@ -2384,10 +2384,6 @@ border: 0px solid #dbdbdb;
     border-bottom-right-radius:10px;
 }
 
-#breadcrumbs{
-    top: 25% !important;
-}
-
 @media (max-width: 768px){ 
     #listeo_gallery_desktop{
         display: none !important;
@@ -2444,14 +2440,14 @@ border: 0px solid #dbdbdb;
         padding-left: 50px;
         padding-right: 10px;        
     }
-    /*.listeo_gallery_img_1, .listeo_gallery_img_2{
+    .listeo_gallery_img_1, .listeo_gallery_img_2{
         display: none;
     }
     .listeo_gallery_img_3 img, .listeo_gallery_img_4 img{
         height: 510px;
         border-top-right-radius:10px;
         border-bottom-right-radius:10px;
-    }*/
+    }
     .listeo_gallery_show_all_btn_min{
         position: absolute;
         right: 24px;
@@ -2781,16 +2777,3 @@ p.mem-bdg:before {
 }
 
 /* ratings add reviews box end */
-
-
-/* reviews below title start */
-
-span.cus_address {
-    display: block !important;
-}
-
-span.cus_address + .star-rating {
-    display: inline;
-}
-
-/* reviews below title end */

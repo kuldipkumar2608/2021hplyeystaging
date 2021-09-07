@@ -81,10 +81,7 @@
             if(!get_option('listeo_disable_reviews'))
             {
                  $rating = get_post_meta($post->ID, 'listeo-avg-rating', true);
-
-                    if(isset($rating)) : 
-                      
-                     $rating_type = get_option('listeo_rating_type','star');
+                    if(isset($rating) && $rating > 0 ) : $rating_type = get_option('listeo_rating_type','star');
                     if($rating_type == 'numerical')
                     { ?>
          <div class="numerical-rating" data-rating="<?php $rating_value = esc_attr(round($rating,1)); printf("%0.1f",$rating_value); ?>">
@@ -115,14 +112,8 @@
                 }    
                     $number = listeo_get_reviews_number($post->ID); 
                     $totalreviews=$number+$google_reviews_count;
-
-            if($rating > 0) {
-                 echo '<div class="star-rating listo-new-star-rating" data-rating="1">';
-               }
-            else {
-              echo '<div class="star-rating listo-new-star-rating" data-rating="0">';
-            } ?>
-
+               ?>
+            <div class="star-rating listo-new-star-rating" data-rating="1">
                <!-- cristian made change -->
                <h6><?php echo number_format( $rating,1 ); ?></h6>
                <div class="rating-counter">(&nbsp;<?= $totalreviews ?>&nbsp;)</div>
@@ -291,8 +282,7 @@ $reviewsarr[]=array('@type'=>'Review','author'=>$authorname,'datePublished'=>$pu
 }
 
 $reviews_snippet= json_encode($reviewsarr);
-
-if($roundrating!=0){ ?>
+?>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -319,6 +309,4 @@ if($roundrating!=0){ ?>
     
   }
 </script>
-<?php }  ?>
-
 <!-- Google snippet / start -->

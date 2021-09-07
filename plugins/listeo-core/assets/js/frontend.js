@@ -844,9 +844,9 @@
 
 
           var form_data = new FormData();
-          for(i=0; i<file_obj.length; i++) {
-           form_data.append('file[]', file_obj[i]);
-          }
+          //for(i=0; i<file_obj.length; i++) {
+          //  form_data.append('file[]', file_obj[i]);
+          //}
 
           //Check if email has some email and phone number
           var emailExp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/img;
@@ -862,7 +862,7 @@
           var siteUrlExp=/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/img;
           // message = message.replace(siteUrlExp, '-------');
 
-          if(emailExp.test(message)|| phoneExp.test(message) || phoneExp1.test(message) || phoneExp2.test(message) || siteUrlExp.test(message) || CheckUrl(message) || filter_hyply_chat_message(message) == 1 ){
+          if(emailExp.test(message)|| phoneExp.test(message) || phoneExp1.test(message) || phoneExp2.test(message) || siteUrlExp.test(message) || CheckUrl(message)){
             console.log("detected");
               // var listeo_msg_err = '<div style="margin-top: 5px; display: block!important" class="listeo_msg_err notification error listing-manager-error">'+
               //                         'Websites, emails and phone numbers aren’t allowed in message. To keep Hypley users and yourself safe from phishing, scraping etc please remove to continue publishing your message.'+
@@ -892,10 +892,6 @@
                     success: function(data){
                         // clear the message box
                         $('#contact-message').val('');
-
-                        // clear form files
-                        $('#fileInput').val('');
-
                         // clear the uploaded image
                         $('.selected-files').html('');
                         //console.log(data);
@@ -2312,36 +2308,22 @@
         }
     });
 
-    //Stop Progress redirect slick prev
+    $("body").on('click','.listeo_grid_view_item',function(e){
+        var url = $(this).data('link');
+        window.open(url, '_blank');
+    });
+
     $("body").on('click','.slick-prev',function(e){
           e.stopPropagation();
     });
-
-    //Stop Progress redirect slick next
     $("body").on('click','.slick-next',function(e){
           e.stopPropagation();
     });
-
-    // Stop Progress redirect popup
     $("body").on('click','.popup-with-zoom-anim',function(e){
           e.stopPropagation();
     });
-
-    //Stop Progress redirect bookmark
     $("body").on('click','.like-icon',function(e){
           e.stopPropagation();
-    });
-
-    //Stop Progress redirect two tab
-    $("body").on('click','.listeo_liting_single_galary_image',function(e){
-          e.stopPropagation();
-    });
-
-    // Bottom click issue fix
-    $("body").on('click','.listeo_grid_view_item',function(e){
-        //console.log("single click");
-        var url = $(this).data('link');
-        window.open(url, '_blank');
     });
 
     })(this.jQuery);
@@ -2404,41 +2386,7 @@ jQuery("#contact-message").blur(function() {
 function filter_hyply_chat_message(message){
   if(
     message.includes('www') ||
-    message.includes('.com') ||
-    message.includes('fb') ||
-    message.includes('Facebook') ||
-    message.includes('instagram') ||
-    message.includes('insta') ||
-    message.includes('@') ||
-    message.includes('call') ||
-    message.includes('website') ||
-    message.includes('visit') ||
-    message.includes('search') ||
-    message.includes('find us') ||
-    message.includes('google') ||
-    message.includes('username') ||
-    message.includes('mail') ||
-    message.includes('contact') ||
-    message.includes('phone number') ||
-    message.includes('Email id') ||
-    message.includes('Email address') ||
-    message.includes('business name') ||
-    message.includes('site') ||
-    message.includes('Email')) {
-    var email_text_found = 1;
-    //console.log("email found");
-  }
-  else {
-      var email_text_found = 0;
-  }
-
-  return email_text_found;
-}
-
-function filter_hyply_chat_message_old(message){
-  if(
-    message.includes('www') ||
-    message.includes('.com') ||
+    message.includes('com') ||
     message.includes('fb') ||
     message.includes('Facebook') ||
     message.includes('instagram') ||

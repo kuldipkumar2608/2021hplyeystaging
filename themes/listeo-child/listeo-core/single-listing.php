@@ -16,7 +16,7 @@ if(empty($gallery_style)) { $gallery_style = get_option('listeo_gallery_type','t
 $count_gallery = listeo_count_gallery_items($post->ID);
 
 if($count_gallery < 4 ){
-	$gallery_style = 'top';	
+	$gallery_style = 'content';	
 }
 if( get_post_meta( $post->ID, '_gallery_style', true ) == 'top' && $count_gallery == 1 ) {
 	//$gallery_style = 'none';	
@@ -128,7 +128,7 @@ else: ?>
 					 ?>
 					</h2>
 					<?php if(get_the_listing_address()): ?>
-						<span class="cus_address">
+						<span>
 							<a href="#listing-location" class="listing-address">
 								<i class="fa fa-map-marker"></i>
 								<?php the_listing_address(); ?>
@@ -157,7 +157,7 @@ else: ?>
 		            }
 
 							 $rating = get_post_meta($post->ID, 'listeo-avg-rating', true); 
-								if(isset($rating)) : 
+								if(isset($rating) && $rating > 0 ) : 
 									$rating_type = get_option('listeo_rating_type','star');
 									if($rating_type == 'numerical') { ?>
 										<div class="numerical-rating" data-rating="<?php $rating_value = esc_attr(round($rating,1)); printf("%0.1f",$rating_value); ?>">
@@ -387,6 +387,74 @@ else: ?>
 						</div>
 					</div>
 
+					<!-- User profile status start -->
+
+					<div class="boxed-widget margin-top-30 margin-bottom-50 verification-section bad-sec" id="unverified-status-listing">
+					<?php					
+					global $wpdb;
+
+					$udata = get_userdata($owner_id);
+					$registered = $udata->user_registered;
+					?>
+					
+					<p class="mem-bdg">Joined on <?php echo date( 'F d Y', strtotime($registered));?></p>	
+						<?php								
+							if (  $udata->user_status == 1  ) 
+								echo '<p class="em-ic">Email Verified</p>';	
+												
+							$total_visitor_reviews_args = array(
+									'post_author' 	=> $udata->ID,
+									'parent'      	=> 0,
+									'status' 	  	=> 'approve',
+									'post_type'   	=> 'listing',
+									'orderby' 		=> 'post_date' ,
+		            				'order' 		=> 'DESC',
+								);
+
+								$total_visitor_reviews = get_comments( $total_visitor_reviews_args ); 
+								$review_total = 0;
+								$review_count = 0;
+								foreach($total_visitor_reviews as $review) {
+									if( get_comment_meta( $review->comment_ID, 'listeo-rating', true ) ) {
+									 $review_total = $review_total + (int) get_comment_meta( $review->comment_ID, 'listeo-rating', true );
+									 $review_count++;
+									}
+								}
+
+					            $twenty=20;
+		                        if($review_count > $twenty){
+								echo '<div id="high_rate_div"><p class="high_rate"><i class="fa fa-star" aria-hidden="true"></i>Highly Rated</p></div>';
+		                        }
+
+		                        $selectCon= $wpdb->get_results("SELECT *  FROM {$wpdb->prefix}listeo_core_conversations WHERE user_2 = {$owner_id}");
+
+	       $alltime = [];
+	       foreach($selectCon as $con){
+		  $time = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}listeo_core_messages WHERE conversation_id = {$con->id} AND sender_id = {$owner_id} LIMIT 1");
+		   if(!empty($time)){
+			$alltime[]= $time;
+		   }
+
+	      }
+	      if((int) count($alltime) > 0 && (int) count($selectCon) > 0){
+		    $rate =  15;//(int) count($alltime)/ (int) count($selectCon) * 100;
+	      }else{
+		    $rate = null;
+	       }
+
+	
+	if((80 <= $rate) && ($rate <= 100)){
+		echo '<div id="very_responsive_section">
+            <p class="very_response"><i class="fa fa-smile-o" aria-hidden="true"></i>Very Responsive</p></div>';
+	}
+							 ?>
+							
+												
+					</div>
+
+					<!-- User profile status end -->
+
+
 					<div>
 						<?php if ( is_active_sidebar( 'single_unveryfie_siderbar' ) ) : ?>
 								<?php dynamic_sidebar( 'single_unveryfie_siderbar' ); ?>
@@ -570,9 +638,7 @@ $reviewsarr[]=array('@type'=>'Review','author'=>$authorname,'datePublished'=>$pu
 }
 
 $reviews_snippet= json_encode($reviewsarr);
-
-if($roundrating!=0){ ?>
-	
+?>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -599,9 +665,6 @@ if($roundrating!=0){ ?>
     
   }
 </script>
-
-<?php }  ?>
-
 <!-- Google snippet / end -->
 <?php
 echo do_shortcode( '[elementor-template id="29949"]' );?>
