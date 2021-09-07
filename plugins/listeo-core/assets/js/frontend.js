@@ -2312,17 +2312,36 @@
         }
     });
 
+    //Stop Progress redirect slick prev
     $("body").on('click','.slick-prev',function(e){
           e.stopPropagation();
     });
+
+    //Stop Progress redirect slick next
     $("body").on('click','.slick-next',function(e){
           e.stopPropagation();
     });
+
+    // Stop Progress redirect popup
     $("body").on('click','.popup-with-zoom-anim',function(e){
           e.stopPropagation();
     });
+
+    //Stop Progress redirect bookmark
     $("body").on('click','.like-icon',function(e){
           e.stopPropagation();
+    });
+
+    //Stop Progress redirect two tab
+    $("body").on('click','.listeo_liting_single_galary_image',function(e){
+          e.stopPropagation();
+    });
+
+    // Bottom click issue fix
+    $("body").on('click','.listeo_grid_view_item',function(e){
+        //console.log("single click");
+        var url = $(this).data('link');
+        window.open(url, '_blank');
     });
 
     })(this.jQuery);
